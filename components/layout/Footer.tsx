@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { ChefHat, Instagram, Twitter, Facebook, Youtube } from "lucide-react"
+import { ChefHat } from "lucide-react"
+import { SiInstagram, SiFacebook, SiYoutube } from "react-icons/si"
+import { FaXTwitter } from "react-icons/fa6";
 import { Button } from "@/components/ui/button"
 
 const Footer = () => {
@@ -19,17 +21,19 @@ const Footer = () => {
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" asChild>
                 <Link href="https://www.instagram.com/allofjc/" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-5 w-5" />
+                  <SiInstagram className="h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="ghost" size="icon">
-                <Twitter className="h-5 w-5" />
+                <FaXTwitter className="h-5 w-5" />
               </Button>
               <Button variant="ghost" size="icon">
-                <Facebook className="h-5 w-5" />
+                <SiFacebook className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon">
-                <Youtube className="h-5 w-5" />
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="https://www.youtube.com/@allofjc" target="_blank" rel="noopener noreferrer">
+                  <SiYoutube className="h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
