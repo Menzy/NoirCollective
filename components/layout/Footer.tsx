@@ -17,8 +17,10 @@ const Footer = () => {
               Elevating culinary experiences through artistry and innovation.
             </p>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon">
-                <Instagram className="h-5 w-5" />
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="https://www.instagram.com/allofjc/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5" />
+                </Link>
               </Button>
               <Button variant="ghost" size="icon">
                 <Twitter className="h-5 w-5" />
