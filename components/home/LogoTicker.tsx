@@ -1,45 +1,68 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
+import { Fragment } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import masterCard from "/public/images/logos/mastercard.png";
+import prime from "/public/images/logos/prime.png";
+import cocacola from "/public/images/logos/cocacola.png";
+import google from "/public/images/logos/google.png";
+import lgtv from "/public/images/logos/lg.png";
+import maggi from "/public/images/logos/maggi.png";
+import meta from "/public/images/logos/meta.png";
+import nivea from "/public/images/logos/nivea.png";
+import tecno from "/public/images/logos/tecno.png";
+import cowrywise from "/public/images/logos/cowrywise.png";
 
 const logos = [
-  { name: "Food & Wine", url: "https://example.com/food-and-wine.svg" },
-  { name: "Michelin Guide", url: "https://example.com/michelin.svg" },
-  { name: "Bon Appétit", url: "https://example.com/bon-appetit.svg" },
-  { name: "James Beard Foundation", url: "https://example.com/james-beard.svg" },
-  { name: "Saveur", url: "https://example.com/saveur.svg" },
-]
+    { name: "masterCard", image: masterCard },
+    { name: "Prime Video", image: prime },
+    { name: "Coca Cola", image: cocacola },
+    { name: "Google", image: google },
+    { name: "Cowrywise", image: cowrywise },
+    { name: "lgtv", image: lgtv },
+    { name: "Maggi", image: maggi },
+    { name: "Meta", image: meta },
+    { name: "Nivea", image: nivea },
+    { name: "Tecno", image: tecno },
+];
 
-const LogoTicker = () => {
-  return (
-    <section className="py-16 bg-muted/50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-center text-2xl font-semibold mb-12">
-          Featured In
-        </h2>
-        <motion.div
-          className="flex justify-around items-center flex-wrap gap-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="p-6">
-                <h3 className="text-xl font-semibold">{logo.name}</h3>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  )
+export default function LogoTicker() {
+    return (
+        <section className="py-24 overflow-x-clip">
+            <div className="container">
+                <h3 className="text-center text-white/50 text-xl">
+                    Proudly featured in skits for these amazing brands
+                </h3>
+                <div className="flex overflow-hidden mt-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                    <motion.div
+                        animate={{
+                            x: "-50%",
+                        }}
+                        transition={{
+                            duration: 30,
+                            ease: "linear",
+                            repeat: Infinity,
+                            repeatType: "loop",
+                        }}
+                        className="flex shrink-0 gap-24 pr-24 min-w-full"
+                    >
+                        {Array.from({ length: 2 }).map((_, i) => (
+                            <Fragment key={i}>
+                                {logos.map((logo) => (
+                                    <Image
+                                        src={logo.image}
+                                        key={logo.name}
+                                        alt={logo.name}
+                                        height={50}
+                                        style={{ objectFit: "cover" }}
+                                    />
+                                ))}
+                            </Fragment>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
 }
-
-export default LogoTicker
